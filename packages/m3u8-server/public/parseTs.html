@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+  <script>
+    window.onload = function () {
+      const canvas = document.querySelector("#canvas")
+      const ctx = canvas.getContext("2d")
+      console.log(ctx);
+
+      fetch("/lion1.ts").then(data => {
+        console.log(data);
+
+        console.log(data.arrayBuffer());
+        console.log(data.body);
+
+        const video = document.createElement("video")
+        video.autoplay = "autoplay"
+        video.muted = "muted"
+
+        // 没搞出来，我希望解码 ts文件成 二进制，然后通过什么方式直接播放 音频视频
+
+        // video.src = URL.createObjectURL([data.body])
+
+        document.body.append(video)
+
+        ctx.drawImage(video, 0, 0, 800, 600);
+      })
+    }
+
+  </script>
+</body>
+
+</html>
