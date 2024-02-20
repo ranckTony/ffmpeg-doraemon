@@ -13,21 +13,44 @@ ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...
 ```
 
 ```bash
-// -i代表输入文件，-c代表输出文件，copy代表和原视频音视频编码保持一致
+// -i代表输入文件，-c代表指定编码输出文件，copy代表和原视频音视频编码保持一致
 ffmpeg -i test.mp4 -c copy test.avi
 ```
 
-| 指令 | 说明         | 解释 |
-| ---- | ------------ | ---- |
-| -i   | 输入         |      |
-| -c   | 输出         |      |
-| copy | 编码保持一致 |      |
-| -r   | 视频帧率     |      |
-| -s   | 视频分辨率   |      |
-| -vb  | 视频码率     |      |
-| -ab  | 音频码率     |      |
+| 指令 | 说明         | 解释                         |
+| ---- | ------------ | ---------------------------- |
+| -i   | 输入         | 指定输入文件                 |
+| -c   | 指定编解码器 | 指定编码或者解码方式，copy， |
+| copy | 编码保持一致 | 原样编码                     |
+| -r   | 视频帧率     |                              |
+| -s   | 视频分辨率   |                              |
+| -vb  | 视频码率     |                              |
+| -ab  | 音频码率     |                              |
+
+查询 ffmpeg 可以指定的编码器
+
+```bash
+ffmpeg -codecs
+```
+
+常见的视频编码： h264
+常见的音频编码： acc
+
+h264 支持： mp4、flv、avi、mov、wmv、m4v、f4v、3gp、ts
+aac 支持：mp4、flv、avi、mov、wmv、3gp、m4v、f4v、ts[]、aac、m4a、wma、ac3
+
+```bash
+ffmpeg -i test.mp4 -c:v h264 out.flv
+```
 
 ## 功能
+
+```bash
+// 查看视频信息
+ffmpeg -i video.mpg
+
+ffprobe video.mpg
+```
 
 ```bash
 // 把视频分解成连续的图片
