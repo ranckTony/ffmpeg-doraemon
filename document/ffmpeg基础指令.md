@@ -47,8 +47,7 @@ ffmpeg -i test.mp4 -c:v h264 out.flv
 
 ```bash
 // 查看视频信息
-ffmpeg -i video.mpg
-
+ffmpeg -i video.mpg  // 报错，但是也可以查看视频信息
 ffprobe video.mpg
 ```
 
